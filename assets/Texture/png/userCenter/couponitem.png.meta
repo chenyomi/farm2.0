@@ -1,0 +1,30 @@
+{
+  "ver": "1.0.0",
+  "uuid": "349dbd7d-7303-475f-a2e4-ae292e20d9c5",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "subMetas": {
+    "couponitem": {
+      "ver": "1.0.3",
+      "uuid": "66eb7d70-f553-4864-a84d-8d7e8bf8a9bd",
+      "rawTextureUuid": "349dbd7d-7303-475f-a2e4-ae292e20d9c5",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 690,
+      "height": 220,
+      "rawWidth": 690,
+      "rawHeight": 220,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

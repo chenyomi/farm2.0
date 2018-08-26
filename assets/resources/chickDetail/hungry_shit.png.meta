@@ -1,0 +1,30 @@
+{
+  "ver": "1.0.0",
+  "uuid": "ca787beb-c36c-4423-8bbe-9b237ae0e3ce",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "subMetas": {
+    "hungry_shit": {
+      "ver": "1.0.3",
+      "uuid": "7e42c41b-d29b-4159-8a13-7ccfb987bfd4",
+      "rawTextureUuid": "ca787beb-c36c-4423-8bbe-9b237ae0e3ce",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 1.5,
+      "offsetY": 0,
+      "trimX": 10,
+      "trimY": 11,
+      "width": 56,
+      "height": 63,
+      "rawWidth": 73,
+      "rawHeight": 85,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

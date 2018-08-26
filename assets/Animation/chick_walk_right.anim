@@ -1,0 +1,43 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "chick_walk_right",
+  "_objFlags": 0,
+  "_rawFiles": null,
+  "_duration": 0.06666666666666667,
+  "sample": 60,
+  "speed": 0.08,
+  "wrapMode": 2,
+  "curveData": {
+    "comps": {
+      "cc.Sprite": {
+        "spriteFrame": [
+          {
+            "frame": 0,
+            "value": {
+              "__uuid__": "3ea85cdb-c9e1-44f8-90fa-e92171577dce"
+            }
+          },
+          {
+            "frame": 0.016666666666666666,
+            "value": {
+              "__uuid__": "cf04b024-4cf3-49ff-857c-a9affbad0031"
+            }
+          },
+          {
+            "frame": 0.03333333333333333,
+            "value": {
+              "__uuid__": "0c1b57f6-99d5-401f-a207-bd927ded8e64"
+            }
+          },
+          {
+            "frame": 0.05,
+            "value": {
+              "__uuid__": "572d707e-6cce-40be-8f9f-f80417ed0837"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "events": []
+}

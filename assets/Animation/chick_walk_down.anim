@@ -1,0 +1,43 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "chick_walk_down",
+  "_objFlags": 0,
+  "_rawFiles": null,
+  "_duration": 0.06666666666666667,
+  "sample": 60,
+  "speed": 0.134,
+  "wrapMode": 2,
+  "curveData": {
+    "comps": {
+      "cc.Sprite": {
+        "spriteFrame": [
+          {
+            "frame": 0,
+            "value": {
+              "__uuid__": "3380efcf-9b35-438f-89fd-1cf645219327"
+            }
+          },
+          {
+            "frame": 0.016666666666666666,
+            "value": {
+              "__uuid__": "0f8f12e4-f394-4fb3-bda4-5cf8baf99f97"
+            }
+          },
+          {
+            "frame": 0.03333333333333333,
+            "value": {
+              "__uuid__": "27ad8879-3b5c-4407-a6e4-86260fae6698"
+            }
+          },
+          {
+            "frame": 0.05,
+            "value": {
+              "__uuid__": "dc83b9e4-1bbe-4130-b259-bbe845b19eb7"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "events": []
+}

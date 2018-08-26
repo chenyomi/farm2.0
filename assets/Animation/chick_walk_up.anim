@@ -1,0 +1,43 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "chick_walk_up",
+  "_objFlags": 0,
+  "_rawFiles": null,
+  "_duration": 0.06666666666666667,
+  "sample": 60,
+  "speed": 0.134,
+  "wrapMode": 2,
+  "curveData": {
+    "comps": {
+      "cc.Sprite": {
+        "spriteFrame": [
+          {
+            "frame": 0,
+            "value": {
+              "__uuid__": "c850a58d-03d2-40fb-a927-0ac59077d519"
+            }
+          },
+          {
+            "frame": 0.016666666666666666,
+            "value": {
+              "__uuid__": "86a691d1-16bd-49aa-bc86-c0e78280ce8e"
+            }
+          },
+          {
+            "frame": 0.03333333333333333,
+            "value": {
+              "__uuid__": "cf56814d-f1ce-4884-9ff2-3c46a5702a6f"
+            }
+          },
+          {
+            "frame": 0.05,
+            "value": {
+              "__uuid__": "980a2cbc-fae8-454a-8675-e4b7619a264d"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "events": []
+}

@@ -1,0 +1,25 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "timego",
+  "_objFlags": 0,
+  "_rawFiles": null,
+  "_duration": 6.02,
+  "sample": 60,
+  "speed": 0.5,
+  "wrapMode": 2,
+  "curveData": {
+    "props": {
+      "rotation": [
+        {
+          "frame": 0,
+          "value": 0
+        },
+        {
+          "frame": 6.016666666666667,
+          "value": 360
+        }
+      ]
+    }
+  },
+  "events": []
+}

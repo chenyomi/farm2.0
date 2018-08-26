@@ -1,0 +1,85 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "eggBroken",
+  "_objFlags": 0,
+  "_rawFiles": null,
+  "_duration": 0.18333333333333332,
+  "sample": 60,
+  "speed": 0.2,
+  "wrapMode": 0,
+  "curveData": {
+    "comps": {
+      "cc.Sprite": {
+        "spriteFrame": [
+          {
+            "frame": 0,
+            "value": {
+              "__uuid__": "40595ad7-810e-4db1-9f53-c7d35a0c76ff"
+            }
+          },
+          {
+            "frame": 0.016666666666666666,
+            "value": {
+              "__uuid__": "3946ec7f-c6e1-4b87-8bc5-cf39bb0492b5"
+            }
+          },
+          {
+            "frame": 0.03333333333333333,
+            "value": {
+              "__uuid__": "2d616ad0-456e-48da-b45c-6b735f09e445"
+            }
+          },
+          {
+            "frame": 0.05,
+            "value": {
+              "__uuid__": "33fced8b-8d3e-4e8c-b35e-1a483745655b"
+            }
+          },
+          {
+            "frame": 0.06666666666666667,
+            "value": {
+              "__uuid__": "b4f11374-b0be-4687-869c-ef03f6fe14d9"
+            }
+          },
+          {
+            "frame": 0.08333333333333333,
+            "value": {
+              "__uuid__": "e12ad9cd-4f95-4232-8bdb-5d8dd5fe07a1"
+            }
+          },
+          {
+            "frame": 0.1,
+            "value": {
+              "__uuid__": "bdb8cf50-917f-40e5-b1a9-2f4a7c458bca"
+            }
+          },
+          {
+            "frame": 0.11666666666666667,
+            "value": {
+              "__uuid__": "8a33265a-b1ea-49e5-aa2c-a73fc02d40b1"
+            }
+          },
+          {
+            "frame": 0.13333333333333333,
+            "value": {
+              "__uuid__": "75e7579b-cb93-4a77-b958-c30fb19f1fc2"
+            }
+          },
+          {
+            "frame": 0.15,
+            "value": {
+              "__uuid__": "3f4e592c-babd-48aa-b303-aa549d490d2e"
+            }
+          },
+          {
+            "frame": 0.16666666666666666,
+            "value": {
+              "__uuid__": "3dd874fb-a9a0-437f-b9f3-3365060ec6b6"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "events": []
+}

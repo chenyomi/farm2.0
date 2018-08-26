@@ -1,0 +1,30 @@
+{
+  "ver": "1.0.0",
+  "uuid": "385a1d6f-7440-4966-975c-9c364adef741",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "subMetas": {
+    "farm_icon_01": {
+      "ver": "1.0.3",
+      "uuid": "259c7d53-2d0f-4610-bc99-5743895fd1b1",
+      "rawTextureUuid": "385a1d6f-7440-4966-975c-9c364adef741",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 1,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 80,
+      "height": 99,
+      "rawWidth": 80,
+      "rawHeight": 101,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
