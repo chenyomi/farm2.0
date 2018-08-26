@@ -418,7 +418,7 @@ cc.Class({
     if (CropsStatus !== 0 && !IsLock && IsWater) {
       if (!IsDisinsection && IsWater) {
         Config.allcount = Config.allcount + 1;
-        this.dataList.List[id].IsWater = false;
+        this.dataList.List[id].IsDry= false;
         cc.sys.localStorage.setItem('FarmData', JSON.stringify(this.dataList));
         Data.func.CropsWatering(CropsID, Config.openID).then(data => {
           if (data.Code === 1) {
