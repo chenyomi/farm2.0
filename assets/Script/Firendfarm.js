@@ -22,7 +22,7 @@ cc.Class({
   onLoad() {
     //设置好友农场名称
     var self = this;
-    document.title = `${Config.friendName}的农场`;
+    
     this.oldData = null;
     this.allcount = 0;
     this.FarmJs = cc.find('Canvas');
@@ -61,6 +61,7 @@ cc.Class({
       if (data.Code === 1) {
         self.setHeadImg(friendImg, data.UserModel.Headimgurl);
         Lv.string = data.UserModel.Grade;
+        document.title = `${data.UserModel.RealName}的农场`;
       } else {
         console.log('数据加载失败');
       }
@@ -397,8 +398,12 @@ cc.Class({
       }
     }
     if (n == 6) {
+      Config.allcount = 0;
       this.collectCrops(i);
+    }else{
+      self.upLocDataByPlant();
     }
+   
   },
 
   //浇水
@@ -413,15 +418,17 @@ cc.Class({
     if (CropsStatus !== 0 && !IsLock && IsWater) {
       if (!IsDisinsection && IsWater) {
         Config.allcount = Config.allcount + 1;
+        this.dataList.List[id].IsWater = false;
+        cc.sys.localStorage.setItem('FarmData', JSON.stringify(this.dataList));
         Data.func.CropsWatering(CropsID, Config.openID).then(data => {
           if (data.Code === 1) {
-            self.timers = setTimeout(function() {
-              Data.func.getFarmModalData(Config.friendOpenId).then(data2 => {
-                self.FarmJs.emit('updataPlant', {
-                  data: data2.Model
-                });
-              });
-            }, 1500);
+            // self.timers = setTimeout(function() {
+            //   Data.func.getFarmModalData(Config.friendOpenId).then(data2 => {
+            //     self.FarmJs.emit('updataPlant', {
+            //       data: data2.Model
+            //     });
+            //   });
+            // }, 1500);
           } else {
           }
         });
@@ -445,15 +452,17 @@ cc.Class({
     if (CropsStatus !== 0 && !IsLock && IsWeeds) {
       if (IsWeeds && !IsDisinsection && !IsWater) {
         Config.allcount = Config.allcount + 1;
+        this.dataList.List[id].IsWeeds = false;
+        cc.sys.localStorage.setItem('FarmData', JSON.stringify(this.dataList));
         Data.func.CropsWeeding(CropsID, Config.openID).then(data => {
           if (data.Code === 1) {
-            self.timers = setTimeout(function() {
-              Data.func.getFarmModalData(Config.friendOpenId).then(data2 => {
-                self.FarmJs.emit('updataPlant', {
-                  data: data2.Model
-                });
-              });
-            }, 1500);
+            // self.timers = setTimeout(function() {
+            //   Data.func.getFarmModalData(Config.friendOpenId).then(data2 => {
+            //     self.FarmJs.emit('updataPlant', {
+            //       data: data2.Model
+            //     });
+            //   });
+            // }, 1500);
           } else {
           }
         });
@@ -477,15 +486,18 @@ cc.Class({
     if (CropsStatus !== 0 && !IsLock && IsDisinsection) {
       if (IsDisinsection) {
         Config.allcount = Config.allcount + 1;
+        this.dataList.List[id].IsDisinsection = false;
+        cc.sys.localStorage.setItem('FarmData', JSON.stringify(this.dataList));
         Data.func.CropsDisinsection(CropsID, Config.openID).then(data => {
           if (data.Code === 1) {
-            self.timers = setTimeout(function() {
-              Data.func.getFarmModalData(Config.friendOpenId).then(data2 => {
-                self.FarmJs.emit('updataPlant', {
-                  data: data2.Model
-                });
-              });
-            }, 1500);
+          
+            // self.timers = setTimeout(function() {
+            //   Data.func.getFarmModalData(Config.friendOpenId).then(data2 => {
+            //     self.FarmJs.emit('updataPlant', {
+            //       data: data2.Model
+            //     });
+            //   });
+            // }, 1500);
           } else {
           }
         });
@@ -541,7 +553,17 @@ cc.Class({
     }
     return src_;
   },
-
+  //更新数据
+  upLocDataByPlant() {
+    let self = this;
+    setTimeout(() => {
+      let datas = JSON.parse(cc.sys.localStorage.getItem('FarmData'));
+      console.log(datas);
+      self.clearAllDom(datas.List); //清除植物数据
+      self.setLocData(datas.List);
+      self.fatchPlant(datas.List); //重新加载植物
+    }, 500);
+  },
   //清空植物
   clearAllDom(ValueList) {
     let self = this;
