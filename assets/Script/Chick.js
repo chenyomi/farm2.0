@@ -70,6 +70,7 @@ var Chick = cc.Class({
       chickDetailJs.Id = id;
     });
     Config.menuNode.active = false;
+    Config.SlideNode.active = false;
     Config.hearderNode.active = false;
   },
   // update(dt) {
@@ -254,39 +255,6 @@ var Chick = cc.Class({
   },
   //根据小鸡的状态 播放不同的动画
   playAnim: function() {
-    // if (this._status != 0) {
-    //   if (this._chickStatus.sick && this._chickStatus.hungry && this._chickStatus.shit) {
-    //     this.playChickShitHungrySick();
-    //     return;
-    //   }
-    //   if (!this._chickStatus.sick && !this._chickStatus.hungry && !this._chickStatus.shit) {
-    //     this.playChickMove();
-    //     return;
-    //   }
-    //   if (this._chickStatus.sick) {
-    //     //生病状态
-    //     !this._chickStatus.hungry && !this._chickStatus.shit ? this.playChickSick() : false;
-    //     //生病+饥饿状态
-    //     this._chickStatus.hungry && !this._chickStatus.shit ? this.playChickSickHungry() : false;
-    //     //生病+肮脏状态
-    //     !this._chickStatus.hungry && this._chickStatus.shit ? this.playChickSickShit() : false;
-    //   }
-    //   if (this._chickStatus.hungry) {
-    //     //饥饿状态
-    //     !this._chickStatus.sick && !this._chickStatus.shit ? this.playChickHungry() : false;
-    //     //饥饿+肮脏状态
-    //     !this._chickStatus.sick && this._chickStatus.shit ? this.playChickShitHungry() : false;
-    //     //饥饿+生病状态
-    //     this._chickStatus.sick && this._chickStatus.shit ? this.playChickSickHungry() : false;
-    //   }
-    //   if (this._chickStatus.shit) {
-    //     //肮脏状态
-    //     !this._chickStatus.hungry && !this._chickStatus.sick ? this.playChickShit() : false;
-    //     //肮脏+饥饿状态
-    //     this._chickStatus.hungry && !this._chickStatus.sick ? this.playChickShitHungry() : false;
-    //     //肮脏+生病状态
-    //     !this._chickStatus.hungry && this._chickStatus.sick ? this.playChickSickShit() : false;
-    //   }
-    // }
+
   }
 });

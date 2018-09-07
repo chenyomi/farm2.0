@@ -24,7 +24,9 @@ cc.Class({
     cancelButton.on('click', () => {
       this.node.active = false;
     });
-    this.fetch();
+    setTimeout(function(){
+      self.fetch();
+    },500)
   },
   fetch() {
     Func.AllChickenLayEggTime().then(data => {

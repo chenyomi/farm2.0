@@ -24,7 +24,7 @@ cc.Class({
     document.title = `${Config.realName}的农场`;
     this.oldData = null;
     let self = this;
-
+    Data.func.getShare()
     Config.backArr = ['farm'];
     let org = document.body.clientHeight / document.body.clientWidth;
 
@@ -805,6 +805,7 @@ cc.Class({
   addPersist() {
     if (Config.menuNode) {
       Config.menuNode.active = true;
+      Config.SlideNode.active = true;
       Config.hearderNode.active = true;
     }
   },
@@ -824,7 +825,7 @@ cc.Class({
       totallenth = 16 * 60;
     }
     let showNode = cc.find('timer', e);
-    showNode.setLocalZOrder(1);
+    // showNode.setLocalZOrder(1);
     let showNodeTime = cc.find('timer/text', e).getComponent(cc.Label);
     let ProgressBar = cc.find('timer/progressBar', e).getComponent(cc.ProgressBar);
     let ProgressMask = cc.find('timer/progressBar/Mask', e);

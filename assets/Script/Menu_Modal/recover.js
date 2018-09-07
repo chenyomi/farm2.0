@@ -161,6 +161,7 @@ cc.Class({
   },
   removePersist() {
     Config.menuNode.active = false;
+    Config.SlideNode.active = false;
     Config.hearderNode.active = false;
   },
   start() {}

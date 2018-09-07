@@ -17,7 +17,6 @@ cc.Class({
     this.moneyLabel = cc.find('gold/money', this.node).getComponent(cc.Label);
     this.moneyLabel2 = cc.find('lv_bg/money', this.node).getComponent(cc.Label);
     this.init();
-
     //更新
     self.node.on('upDataMoney', function(event) {
       Func.GetUserGrade().then(data => {
@@ -78,6 +77,7 @@ cc.Class({
   },
   removePersist() {
     Config.menuNode.active = false;
+    Config.SlideNode.active = false;
     Config.hearderNode.active = false;
   }
 

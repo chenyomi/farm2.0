@@ -6,6 +6,7 @@ window.Config = {
   openID: null,
   hearderNode: null,
   menuNode: null,
+  SlideNode:null,
   chickID: null,
   //兑换物品的数据
   newSocket: null,
@@ -21,6 +22,7 @@ window.Config = {
   realName: null,
   UserData: null, //所有用户信息
   headImg: null, //头像
+  noticeIsSlide:false,//是否在滚动
   addressId: 0, //地址ID，
   propertyId: 0, //播种时种子的ID
   fertilizerId: 0, //肥料的ID

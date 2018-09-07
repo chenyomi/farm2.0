@@ -289,6 +289,7 @@ cc.Class({
   },
   removePersist() {
     Config.menuNode.active = false;
+    Config.SlideNode.active = false;
     Config.hearderNode.active = false;
   },
   assignNoFriendData(data) {
@@ -334,6 +335,7 @@ cc.Class({
     this.contentNode.addChild(item);
   },
   onLoad() {
+    let self = this
     this.friendListNode = cc.find('bg-repertory/friendList', this.node);
     this.inputNode = cc.find('bg-repertory/form/input', this.node);
     this.inputEditBox = this.inputNode.getComponent(cc.EditBox);
@@ -345,7 +347,9 @@ cc.Class({
     this.updataDone = true;
     this.bindEvent();
     //得到好友列表数据 并调用绑定方法
-    this.updateData();
+    setTimeout(function(){
+      self.updateData();
+    },500)
   },
   start() {}
 });

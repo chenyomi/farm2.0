@@ -3,10 +3,12 @@
     "__type__": "cc.Prefab",
     "_name": "",
     "_objFlags": 0,
-    "_rawFiles": null,
+    "_native": "",
     "data": {
       "__id__": 1
-    }
+    },
+    "optimizationPolicy": 0,
+    "asyncLoadAssets": false
   },
   {
     "__type__": "cc.Node",
@@ -134,7 +136,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": 179
+      "y": 189
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -471,7 +473,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 249.61,
+      "width": 250,
       "height": 40
     },
     "_rotationX": 0,
@@ -520,7 +522,7 @@
       "__id__": 13
     },
     "_enabled": true,
-    "isAlignOnce": true,
+    "alignMode": 0,
     "_target": null,
     "_alignFlags": 2,
     "_left": 0,
@@ -635,7 +637,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": 106
+      "y": 50
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -989,7 +991,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": 63
+      "y": 83
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -1182,8 +1184,6 @@
     },
     "duration": 0.1,
     "zoomScale": 1.2,
-    "pressedSprite": null,
-    "hoverSprite": null,
     "clickEvents": [],
     "_N$interactable": true,
     "_N$enableAutoGrayEffect": false,
@@ -1202,6 +1202,10 @@
       "a": 255
     },
     "_N$normalSprite": null,
+    "_N$pressedSprite": null,
+    "pressedSprite": null,
+    "_N$hoverSprite": null,
+    "hoverSprite": null,
     "_N$disabledSprite": null,
     "_N$target": {
       "__id__": 1

@@ -8,17 +8,12 @@ cc.Class({
   extends: cc.Component,
   properties: {
     //Chick 节点 Node
-    Chick: {
-      default: null,
-      type: cc.Node
-    },
-    treatIcon: cc.SpriteFrame,
-    clearIcon: cc.SpriteFrame,
+
     feedIcon: cc.SpriteFrame
     //仓库跳转后执行相应操作
   },
 
-  init: function() {
+  init: function () {
     this.eggNode = cc.find('bg/house/shouquEgg', this.node);
     this.houseNode = cc.find('bg/house', this.node);
     this.eggMoreNode = cc.find('eggMore', this.node);
@@ -27,7 +22,7 @@ cc.Class({
     this.wether = this.node.getChildByName('div_wether');
     //饲料数量
     this.feedCountLabel = cc.find('div_action/feed/icon-tip/count', this.node).getComponent(cc.Label);
-    // var chickState = new Chick();
+
     this.scene = cc.find('Canvas');
     //星星 盒子
     this.starsBox = cc.find('bg/starsBox', this.node);
@@ -51,7 +46,7 @@ cc.Class({
   //用户头像
   setHeadImg(dom) {
     if (Config.headImg !== '') {
-      cc.loader.load({ url: Config.headImg, type: 'png' }, function(err, texture) {
+      cc.loader.load({ url: Config.headImg, type: 'png' }, function (err, texture) {
         var frame = new cc.SpriteFrame(texture);
         dom.getComponent(cc.Sprite).spriteFrame = frame;
       });
@@ -76,7 +71,7 @@ cc.Class({
       cc.loader.loadRes('Prefab/Modal/finishGuide', cc.Prefab, (err, prefab) => {
         let itemNode = cc.instantiate(prefab);
         let bttn = cc.find('btn-close', itemNode);
-        bttn.on('click', function() {
+        bttn.on('click', function () {
           itemNode.removeFromParent();
         });
         self.node.addChild(itemNode);
@@ -135,17 +130,17 @@ cc.Class({
     this.GetRanchPeopleShowMessage();
     //socket监听
 
-    Config.newSocket.onmessage = function(evt) {
+    Config.newSocket.onmessage = function (evt) {
       var obj = eval('(' + evt.data + ')');
       if (obj.name == Func.openID && obj.type == 'updataChat') {
-        setTimeout(function() {
+        setTimeout(function () {
           self.GetRanchPeopleShowMessage();
           self.farmSpeak();
           console.log('updataChat');
         }, 1000);
       } else if (obj.name == Func.openID && obj.type == 'friend') {
         self.div_Menu = cc.find('div_menu');
-        setTimeout(function() {
+        setTimeout(function () {
           self.div_Menu.emit('upDataFriend', {
             data: ''
           });
@@ -167,12 +162,14 @@ cc.Class({
         //调用setId接口 给鸡传Id 默认最后那只鸡
         for (let i = 0; i < length; i++) {
           let element = data.List[i];
-
-          // cc.loader.loadRes('Prefab/Chick', cc.Prefab, (err, prefab) => {
           var chickNode = cc.find(`Chick${i}`, this.node);
           chickNode.active = true;
           Tool.RunAction(chickNode, 'fadeIn', 0.15);
-          chickNode.setPosition(250 - Math.random() * 500, Math.random() * -250 - 200);
+          let randPos_x = 250 - Math.random() * 500
+          let randPos_y = Math.random() * -250 - 200
+          chickNode.setPositionY(randPos_y)
+          chickNode.setPositionX(randPos_x)
+          console.log(randPos_x, randPos_y)
           let feedNode = cc.find('feed', chickNode);
           feedNode.active = element.IsHunger;
           this.chickJs = chickNode.getComponent('Chick');
@@ -181,7 +178,6 @@ cc.Class({
           this.chickJs._status = data.List[i].Status;
 
           this.chickList.push(chickNode);
-          // });
         }
       } else {
         !Config.firstLogin ? Msg.show('您的牧场暂无小鸡') : false;
@@ -214,7 +210,7 @@ cc.Class({
           }, this)
         );
         this.eggMoreNode.runAction(action);
-        self.timers = setTimeout(function() {
+        self.timers = setTimeout(function () {
           Msg.show(data.Message);
         }, 1000);
       } else {
@@ -224,7 +220,7 @@ cc.Class({
   },
 
   //点击清理事件
-  showClearAlert: function() {
+  showClearAlert: function () {
     var self = this;
     //调用接口
     Func.PostClean()
@@ -246,7 +242,7 @@ cc.Class({
       });
   },
   //点击喂食事件 集体喂食 接口需要重新设置
-  showFeedAlert: function() {
+  showFeedAlert: function () {
     let self = this;
     Func.PostOwnFeeds().then(data => {
       if (data.Code === 1) {
@@ -260,7 +256,7 @@ cc.Class({
       } else if (data.Code == -2) {
         Alert.show(
           data.Message,
-          function() {
+          function () {
             cc.director.loadScene('shop');
             self.removePersist();
           },
@@ -397,7 +393,7 @@ cc.Class({
         }
       });
     } else {
-      setTimeout(function() {
+      setTimeout(function () {
         self.feedCountLabel.string = count;
       }, 500);
     }
@@ -482,7 +478,7 @@ cc.Class({
               let box = cc.find('Canvas');
               let shitNode = cc.instantiate(prefab);
               shitNode.setPosition(Tool.random(20, 730), Tool.random(20, 330));
-              setTimeout(function() {
+              setTimeout(function () {
                 self.starsBox.addChild(shitNode);
               }, Math.random() * 3000);
             });
@@ -515,7 +511,7 @@ cc.Class({
     cc.director.loadScene('weatherInfo');
     this.removePersist();
   },
-  showUserCenter: function() {
+  showUserCenter: function () {
     cc.director.loadScene('UserCenter/userCenter');
     this.removePersist();
   },
@@ -534,12 +530,13 @@ cc.Class({
     });
   },
 
-  onLoad: function() {
+  onLoad: function () {
     let self = this;
     var openID = window.location.href.split('=')[1];
     window.Config.openID = openID || 'oEHZa0xT2_SpPtdFpzU5nr7v0HxA';
     Func.openID = window.Config.openID;
     Config.newSocket = new WebSocket('ws://service.linedin.cn:5530/');
+    Func.getShare()
 
     cc.director.setDisplayStats(false);
     Config.backArr = ['index'];
@@ -554,24 +551,26 @@ cc.Class({
       updateFeedCount: this.updateFeedCount
     };
 
-    this.node.on('updataFeedCount', function(event) {
+    this.node.on('updataFeedCount', function (event) {
       let count = event.detail.data;
       self.updateFeedCount(1, count);
     });
     this.addPersist();
     this.preloadScene();
+
     Tool.updateHeader();
+
   },
 
   preloadScene() {
-    cc.director.preloadScene('farm', function() {
+    cc.director.preloadScene('farm', function () {
       console.log('Next scene farm');
     });
-    cc.director.preloadScene('userCenter', function() {
+    cc.director.preloadScene('userCenter', function () {
       console.log('Next scene userCenter');
     });
   },
-  start: function() {
+  start: function () {
     this.init();
     // this.chickFunc = this._chick.chickFunc;
     Func.GetWholeData().then(data => {
@@ -589,7 +588,7 @@ cc.Class({
     });
   },
   animates() {
-    cc.loader.loadRes('Prefab/Modal/House', cc.Prefab, function(error, prefab) {
+    cc.loader.loadRes('Prefab/Modal/House', cc.Prefab, function (error, prefab) {
       if (error) {
         cc.error(error);
         return;
@@ -602,7 +601,7 @@ cc.Class({
     });
   },
   loadAnimates() {
-    cc.loader.loadRes('Prefab/Modal/load', cc.Prefab, function(error, prefab) {
+    cc.loader.loadRes('Prefab/Modal/load', cc.Prefab, function (error, prefab) {
       if (error) {
         cc.error(error);
         return;
@@ -629,11 +628,13 @@ cc.Class({
   },
   removePersist() {
     Config.menuNode.active = false;
+    Config.SlideNode.active = false;
     Config.hearderNode.active = false;
   },
   addPersist() {
     if (Config.menuNode) {
       Config.menuNode.active = true;
+      Config.SlideNode.active = true;
       Config.hearderNode.active = true;
     }
   },
@@ -642,9 +643,9 @@ cc.Class({
       dom.spriteFrame = spriteFrame;
     });
   },
+
   farmSpeak() {
     clearTimeout(this.timeFarmer);
-
     let showNode = cc.find('farmer/farmer-text', this.node);
     let showNodeText = cc.find('farmer/farmer-text/text', this.node).getComponent(cc.Label);
     if (this.speakList.length == 1) {
@@ -658,18 +659,12 @@ cc.Class({
       }
 
       showNode.active = true;
-      // var action = cc.sequence(
-      //   cc.fadeOut(0.5),
-      //   cc.callFunc(() => {
-      //     showNode.active = false;
-      //   }, this)
-      // );
-
       this.timeFarmer = setTimeout(() => {
         showNode.active = false;
       }, 5000);
     }
-  }
+  },
+
 
   //update(dt) {}
 });

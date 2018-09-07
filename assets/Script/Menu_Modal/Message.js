@@ -57,7 +57,9 @@ cc.Class({
     rightBtn.on('click', function() {
       self.tabToggle(1);
     });
-    this.friendMessage();
+    setTimeout(function(){
+      self.friendMessage();
+    },500)
   },
 
   tabToggle(TabId) {

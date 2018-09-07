@@ -115,6 +115,7 @@ cc.Class({
   removePersist() {
     Config.menuNode.active = false;
     Config.hearderNode.active = false;
+    Config.SlideNode.active = false;
   },
   start() {}
 

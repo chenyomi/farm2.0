@@ -22,74 +22,17 @@ cc.Class({
   },
   onLoad() {
     let self = this;
-
-    this.node.on('step1', function(event) {
+    Func.getShare()
+   
+    this.node.on('step1', function (event) {
       self.showMenu();
     });
     this.getWeather();
 
     cc.sys.localStorage.clear();
   },
-  getShare() {
-    let self = this;
-    Func.getWxUserShare().then(data => {
-      let shareId = Number(data.shareId);
-      let urlshare = '';
-      if (shareId > 0) {
-        urlshare = 'http://wxapi.zjytny.cn/?shareID=' + shareId;
-      } else {
-        urlshare = 'http://wxapi.zjytny.cn';
-      }
-      wx.config({
-        appId: data.appId, // 必填，公众号的唯一标识
-        timestamp: data.timestamp, // 必填，生成签名的时间戳
-        nonceStr: data.nonceStr, // 必填，生成签名的随机串
-        signature: data.signature, // 必填，签名，见附录1
-        jsApiList: [
-          'onMenuShareTimeline',
-          'onMenuShareAppMessage',
-          'onMenuShareQQ',
-          'onMenuShareWeibo',
-          'onMenuShareQZone',
-          'chooseImage',
-          'uploadImage'
-        ] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
-      });
-      wx.ready(function() {
-        var shareContent = {
-          title: '快来玩转你的专属农场', // 分享标题
-          link: urlshare, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-          imgUrl: 'http://wxapi.zjytny.cn/web-mobile/loading.jpg', // 分享图标
-          desc: '璞心农业虚拟农场，线上认养，线下收获，好玩又实惠！', // 分享描述
-          success: function() {
-            Func.UserShareCallback().then(data => {
-              if (data.Code === 1) {
-                Msg.show(data.Message);
-              } else {
-                //alert(data.Message);
-              }
-            });
-          },
-          cancel: function() {}
-        };
-
-        function _shareCfuc() {
-          wx.onMenuShareTimeline(shareContent);
-          wx.onMenuShareAppMessage(shareContent);
-          wx.onMenuShareQQ(shareContent);
-          wx.onMenuShareWeibo(shareContent);
-          wx.onMenuShareQZone(shareContent);
-        }
-        _shareCfuc();
-      });
-      wx.error(function(res) {
-        alert('分享失败，请稍后再试！');
-      });
-    });
-  },
   start() {
     let self = this;
-    this.getShare();
     if (!Config.menuNode) {
       Config.menuNode = this.node;
       cc.game.addPersistRootNode(this.node);
@@ -102,10 +45,12 @@ cc.Class({
       loadSceneShop: this.loadSceneShop
     };
     this.getStorageCount(); //初始化消息数量
+   
     self.node.on('upDataFriend', function(event) {
       self.getStorageCount();
     });
   },
+
   //显示菜单栏 动画
   showMenu: function() {
     var self = this;
@@ -219,6 +164,7 @@ cc.Class({
   },
   removePersist() {
     Config.menuNode.active = false;
+    Config.SlideNode.active = false;
     Config.hearderNode.active = false;
   }
   // update (dt) {},

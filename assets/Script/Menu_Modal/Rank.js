@@ -145,6 +145,7 @@ cc.Class({
   removePersist() {
     Config.menuNode.active = false;
     Config.hearderNode.active = false;
+    Config.SlideNode.active = false;
   },
   GetEggRankList() {
     this.myRank = cc.find('bg-rank/layout/rank_value_', this.node).getComponent(cc.Label);
@@ -165,9 +166,12 @@ cc.Class({
   },
 
   onLoad() {
+    let self = this
     this.bindNode();
     this.bindEvent();
-    this.GetEggRankList();
+    setTimeout(function(){
+      self.GetEggRankList();
+    },500)
   },
   start() {}
 

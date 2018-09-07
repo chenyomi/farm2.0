@@ -24,14 +24,12 @@ var Modal = cc.Class({
     } else {
       this._Modal = this.ParentBox.getChildByName(this.Prefab.name);
     }
-    this.RunAction(data); //默认
+    this.RunAction("fadeIn"); //默认
   },
   closeModal: function() {
     var self = this;
-    console.log('close modal');
-    this.Modal.active = false;
-    // var action = cc.sequence(cc.fadeOut(0.3), cc.callFunc(this._Modal.removeFromParent, this._Modal));
-    // this._Modal.runAction(action);
+    var action = cc.sequence(cc.scaleTo(0.3, 0,0), cc.callFunc(this.Modal.active = false, this._Modal));
+    this._Modal.runAction(action);
   },
 
   //弹出动画 （默认fadeIn）
@@ -39,10 +37,10 @@ var Modal = cc.Class({
     var action = null;
     switch (type) {
       case 'fadeIn':
+        this._Modal.scale = 0
         this._Modal.active = true;
-        // this._Modal.opacity = 0;
-        // action = cc.fadeIn(0.3);
-        // this._Modal.runAction(action);
+        action = cc.sequence(cc.scaleTo(0.3, 1.05, 1.05), cc.scaleTo(0.15, 1, 1));
+        this._Modal.runAction(action);
         break;
       case 'moveIn':
         var shareNode = cc.find('bg-share', this._Modal);

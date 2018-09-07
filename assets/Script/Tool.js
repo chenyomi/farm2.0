@@ -1,5 +1,5 @@
 var Tool = {
-  setBarColor: function(bar, value) {
+  setBarColor: function (bar, value) {
     var Node = bar;
     if (value < 0.6) {
       Node.color = cc.color('#FF4A4A');
@@ -9,7 +9,7 @@ var Tool = {
       Node.color = cc.color('#74DA72');
     }
   },
-  setLabelColor: function(label, value) {
+  setLabelColor: function (label, value) {
     var node = label.node;
     if (value < 0.6) {
       Node.color = cc.color('#FF4A4A');
@@ -20,7 +20,7 @@ var Tool = {
     }
   },
   //关闭模态
-  closeModal: function(node) {
+  closeModal: function (node) {
     node.active = false;
     // var action = cc.sequence(cc.fadeOut(0.3), cc.callFunc(node.removeFromParent, node));
     // node.runAction(action);
@@ -50,7 +50,7 @@ var Tool = {
     let moveEndX, moveEndY, X, Y, startX, startY;
     node.on(
       cc.Node.EventType.TOUCH_START,
-      function(event) {
+      function (event) {
         if (event.touch._point.y > 300) {
           (startX = event.touch._point.x), (startY = event.touch._point.y);
         }
@@ -66,7 +66,7 @@ var Tool = {
     // );
     node.on(
       cc.Node.EventType.TOUCH_END,
-      function(event) {
+      function (event) {
         (moveEndX = event.touch._point.x),
           (moveEndY = event.touch._point.y),
           (X = moveEndX - startX),
@@ -86,9 +86,58 @@ var Tool = {
       true
     );
   },
+  //滚动字幕
+  slidePluign(node, textnode, list, i, first) {
+    let self = this;
+    if (!first) {
+      this.listSize = list.length - 1;
+      this.listIndexShow = 0;
+      var leftPostion = 600;
+      Config.noticeIsSlide = true;
+      var action = cc.scaleTo(0.3, 1, 1);
+      node.parent.parent.runAction(action);
+      node.setPositionX(600);
+      var timers = setInterval(function () {
+        textnode.string = list[self.listIndexShow].SendData;
+        if (leftPostion == -node.width) {
+          if (self.listIndexShow < i) {
+            self.listIndexShow++;
+            leftPostion = 600;
+          } else {
+            Config.noticeIsSlide = false;
+            clearInterval(timers);
+            var _action = cc.scaleTo(0.3, 0, 0);
+            node.parent.parent.runAction(_action);
+          }
+        } else {
+          node.setPositionX(leftPostion--);
+        }
+      }, 10);
+    } else {
+      let leftPostion = 600
+      node.setPositionX(600)
+      Config.noticeIsSlide = true;
+      let timers = setInterval(function () {
+        if (leftPostion == -node.width) {
+          clearInterval(timers)
+          let action = cc.scaleTo(0.3, 0, 0);
+          node.parent.parent.runAction(action)
+          Config.noticeIsSlide = false;
+        }
+        else {
+          node.setPositionX(leftPostion--)
+        }
+
+      }, 10)
+    }
+
+
+
+  },
   //移除常驻资源
   removePersist() {
     Config.menuNode.active = false;
+    Config.SlideNode.active = false;
     Config.hearderNode.active = false;
   }
 };
