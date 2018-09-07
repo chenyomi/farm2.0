@@ -98,20 +98,28 @@ var Tool = {
       node.parent.parent.runAction(action);
       node.setPositionX(600);
       var timers = setInterval(function () {
-        textnode.string = list[self.listIndexShow].SendData;
-        if (leftPostion == -node.width) {
-          if (self.listIndexShow < i) {
-            self.listIndexShow++;
-            leftPostion = 600;
+        if(list[self.listIndexShow].SendData){
+          textnode.string = list[self.listIndexShow].SendData;
+          if (leftPostion == -node.width) {
+            if (self.listIndexShow < i) {
+              self.listIndexShow++;
+              leftPostion = 600;
+            } else {
+              Config.noticeIsSlide = false;
+              clearInterval(timers);
+              var _action = cc.scaleTo(0.3, 0, 0);
+              node.parent.parent.runAction(_action);
+            }
           } else {
-            Config.noticeIsSlide = false;
-            clearInterval(timers);
-            var _action = cc.scaleTo(0.3, 0, 0);
-            node.parent.parent.runAction(_action);
+            node.setPositionX(leftPostion--);
           }
-        } else {
-          node.setPositionX(leftPostion--);
         }
+       else{
+        Config.noticeIsSlide = false;
+        clearInterval(timers);
+        var _action = cc.scaleTo(0.3, 0, 0);
+        node.parent.parent.runAction(_action);
+       }
       }, 10);
     } else {
       let leftPostion = 600
