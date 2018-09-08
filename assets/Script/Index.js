@@ -519,6 +519,10 @@ cc.Class({
     cc.director.loadScene('Help');
     this.removePersist();
   },
+  btnShop() {
+    cc.director.loadScene('Shop/shop');
+    this.removePersist();
+  },
   loadSceneRepertory() {
     cc.director.loadScene('repertory');
     this.removePersist();

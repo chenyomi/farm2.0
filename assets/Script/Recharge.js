@@ -98,19 +98,19 @@ cc.Class({
     let num = 1;
     switch (n) {
       case 1:
-        num = 1;
+        num = 18;
         break;
       case 2:
-        num = 58;
+        num = 38;
         break;
       case 3:
-        num = 108;
+        num = 68;
         break;
       case 4:
-        num = 208;
+        num = 108;
         break;
       case 5:
-        num = 1888;
+        num = 208;
         break;
     }
     return num;

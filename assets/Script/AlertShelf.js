@@ -59,7 +59,7 @@ var Alertshelf = {
           this._inputPriceEditBox.string = '输入价格(建议200-' + (count * 15 + 200) + ')';
         }
       } else {
-        this._inputPriceEditBox.string = '输入单价(建议10-30)';
+        this._inputPriceEditBox.string = '输入单价(建议10-20)';
       }
       if (isTwoEditbox) {
         this._inputCountNode.active = true;
